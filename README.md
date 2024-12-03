@@ -1,50 +1,21 @@
-# Welcome to your Expo app 👋
+# Tabs with Bottom Sheet
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This makes use of two things:
 
-## Get started
+1. [https://github.com/expo/router/discussions/760: shows how to hijack the tab button tap to open a modal](https://github.com/expo/router/discussions/760)
+2. [https://github.com/gorhom/react-native-bottom-sheet: shows how to use the bottom sheet modal](https://gorhom.dev/react-native-bottom-sheet/)
 
-1. Install dependencies
+Notes:
+- Make sure to add <GestureHandlerRootView> and <BottomSheetModalProvider> to the root layout
+- app/(tabs)/_layout.tsx: shows how to configure the tabs and hijack the tab button tap to open a modal
+- app/(tabs)/transact: is a dummy screen that's ignored since we hijack the tab button tap to open the bottom sheet
+- Bottom sheet is nested inside the tabs layout
+- snapPoints are the points that the bottom sheet will snap to. Note that to set the initial snap point, you need to set the index prop to 1 (not 0)
+- Changing the tab bar height in Android is discouraged, so you'll have to set styles explicitly for each tab. See app/(tabs)/_layout.tsx for more details.
 
-   ```bash
-   npm install
-   ```
+To run:
 
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
 ```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+npm install
+npm run start
+```
